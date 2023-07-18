@@ -1,158 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout.html' %}
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="Anurag Nagar" />
-    <title>Article Bucket - Read Daily Headlines</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
-</head>
-
-<body id="page-top">
-    <!-- Navigation-->
-    <div class="navbar navbar-expand-lg navbar-dark" id="mainNav" style="background-color: #18191a;">
-        <div class="container px-4 justify-content-between">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
-                    class="navbar-toggler-icon"></span></button>
-            <h2><a class="navbar-brand" href="#page-top">Article Bucket</a></h2>
-            <form method="post" action=".">
-                <div class="input-group w-0 ">
-                    <input type="search" class="navbar-search rounded" title="Search for News Here"
-                        placeholder="Search News Here" aria-label="Search" aria-describedby="search-addon" required />
-                    <button class="navbar-search-button border-0" id="search-button" title="Search" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
+{% block content %}
+<!-- Header-->
+<header class="text-white" style="background-color: #FFE53B;
+        background-image: linear-gradient(147deg, #FFE53B 0%, #a33327 74%);">
+    <div class="container px-4 text-center">
+        <h1 class="fw-bolder">Welcome to Article Bucket</h1>
+        <p class="lead">Article Bucket is a online news article platform</p>
+        <a class="btn btn-lg btn-light" href="#headlines">Top Headlines!</a>
     </div>
+</header>
 
-    <div class="navbar navbar-expand-lg fixed-top" style="background-color: #2d2d2d;position:sticky;">
-        <div class="container">
-            <div class="d-flex justify-content-center w-100">
-                <ul class="navbar-nav-2">
-                    <li class="nav-item nav-active"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Business</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Entertainment</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">General</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Healths</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Sports</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Technology</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Science</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header-->
-    <header class="text-white" style="background-color: #FFE53B;
-        background-image: linear-gradient(147deg, #FFE53B 0%, #a33327 74%);
-        ">
-        <div class="container px-4 text-center">
-            <h1 class="fw-bolder">Welcome to Article Bucket</h1>
-            <p class="lead">Article Bucket is a online news article platform</p>
-            <a class="btn btn-lg btn-light" href="#headlines">Top Headlines!</a>
-        </div>
-    </header>
-
-    <!-- Main Content section-->
-    <section id="headlines">
-        <div class="container px-4">
-            <div class="row justify-content-center">
-                {% for news in article %}
-                <article class="col-sm-9 col-md-5 col-lg-4 col-xl-3">
-                    <div class="card mb-3">
-                        <div class="p-2">
-                            <img src="{{ news.urlToImage }}" class="card-img" alt="...">
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title text-muted fw-fold">{{ news.author|upper }}</h6>
-                            <h5 class="card-title">{{ news.title }}</h5>
-                            <p class="card-subtitle mb-3">{{ news.description }}</p>
-                            <p>Published at {{ news.publishedAt }}</p>
-                            <a href="{{ news.url }}" class="btn btn-outline-light w-100">Read More</a>
-                        </div>
+<!-- Main Content section-->
+<section id="headlines">
+    <div class="container px-4">
+        <div class="row justify-content-center">
+            {% for news in article %}
+            <article class="col-sm-9 col-md-5 col-lg-4 col-xl-3">
+                <div class="card mb-3">
+                    <div class="p-2">
+                        <img src="{{ news.urlToImage }}" class="card-img" alt="...">
                     </div>
-                </article>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a
-                globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in
-                which there is no center because every point, or none, is center — an equal earth which all men occupy
-                as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in
-                theory.</p>
-            <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning
-                back from science. The early warnings about technological dangers also come from science.</p>
-            <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set
-                eye on the earth.</p>
-            <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her
-                protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not
-                help but love and cherish her.</p>
-            <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will,
-                the experience most certainly changes your perspective. The things that we share in our world are far
-                more valuable than those which divide us.</p>
-            <h2 class="section-heading">The Final Frontier</h2>
-            <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a
-                task to occupy the generations. And no matter how much progress one makes, there is always the thrill of
-                just beginning.</p>
-            <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a
-                task to occupy the generations. And no matter how much progress one makes, there is always the thrill of
-                just beginning.</p>
-            <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow.
-                Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for
-                the next ten.</blockquote>
-            <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a
-                historical process which mankind is carrying out in accordance with the natural laws of human
-                development.</p>
-            <h2 class="section-heading">Reaching for the Stars</h2>
-            <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a
-                marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so
-                delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to
-                change a man.</p>
-            <a href="#!"><img class="img-fluid"
-                    src="//cdn.cnn.com/cnnnext/dam/assets/220909232312-05-russia-kharkiv-ukraine-intl-hnk-small-tease.jpg"
-                    alt="..." /></a>
-            <span class="caption text-muted">To go places and do things that have never been done before – that’s what
-                living is all about.</span>
-            <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to
-                explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has
-                gone before.</p>
-            <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental
-                truth to our nature, Man must explore, and this is exploration at its greatest.</p>
-            <p>
-                Placeholder text by
-                <a href="http://spaceipsum.com/">Space Ipsum</a>
-                &middot; Images by
-                <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
-            </p>
-            <div class="d-flex justify-content-between mb-4">
-                <a class="btn btn-primary text-uppercase" href="">Old Posts →</a>
-                <a class="btn btn-primary text-uppercase ms-7" href="">New Posts →</a>
-            </div>
+                    <div class="card-body">
+                        <h6 class="card-title text-muted fw-fold">{{ news.author|upper }}</h6>
+                        <h5 class="card-title">{{ news.title }}</h5>
+                        <p class="card-subtitle mb-3">{{ news.description }}</p>
+                        <p>Published at {{ news.publishedAt }}</p>
+                        <a href="{{ news.url }}" class="btn btn-outline-light w-100">Read More</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
         </div>
     </div>
+</section>
 
-    <!-- Footer-->
-    <footer class="py-5" style="background-color: #18191a;">
-        <div class="container px-4">
-            <p class="m-0 text-start text-white">Copyright &copy; Your Website 2022</p>
-        </div>
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-</body>
-
-</html>
+{% endblock %}
