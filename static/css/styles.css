@@ -4666,6 +4666,7 @@ fieldset:disabled .btn {
   margin-bottom: 0;
   list-style: none;
   overflow-x: auto;
+  scrollbar-width: none;
 }
 
 .navbar-nav-2 .nav-link {
@@ -5208,6 +5209,7 @@ fieldset:disabled .btn {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  height: 30rem;
   word-wrap: break-word;
   background-color: #23303e;
   background-clip: border-box;
@@ -5248,10 +5250,20 @@ fieldset:disabled .btn {
 }
 
 .card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   margin-bottom: 0.5rem;
 }
 
 .card-subtitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: #ddd;
   margin-top: -0.25rem;
   margin-bottom: 0;
