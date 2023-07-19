@@ -129,12 +129,13 @@ data = [
 
 @app.route("/")
 def index():
-    url = f"https://newsapi.org/v2/everything?q=all&apiKey={API_KEY}"
+    # url = f"https://newsapi.org/v2/everything?q=all&apiKey={API_KEY}"
     # url = f"https://newsapi.org/v2/top-headlines?country=us&apiKey={Api_key}"
-    response = requests.get(url)
-    data = response.json()
-    news_article = data["articles"]
-    article = [article for article in news_article]
+    # response = requests.get(url)
+    # data = response.json()
+    # news_article = data["articles"]
+    # article = [article for article in news_article]
+    article = data
     return render_template('index.html', article=article)
 
 
