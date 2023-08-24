@@ -1,9 +1,8 @@
 from dotenv import load_dotenv
 from flask import Flask
-from flask import render_template
+from flask import abort, redirect, render_template, request, url_for
+from newsapi import NewsApiClient
 from datetime import datetime
-import requests
-import json
 import os
 
 load_dotenv()
@@ -12,12 +11,18 @@ app = Flask(__name__, template_folder='templates')
 
 API_KEY = os.getenv("API_KEY", None)
 
-@app.template_filter('datetime')
+client = NewsApiClient(api_key=API_KEY)
+
+CATEGORIES = ['business', 'entertainment', 'general', 'healths', 'sports', 'technology', 'science']
+
+
+@app.template_filter('date_time')
 def date(timestamp):
     """
     Returns the date formatted string for the given timestamp.
     """
-    return datetime.strptime(timestamp, '%Y %m %d %H:%M:%S')
+    format_datetime = datetime.strptime(timestamp, '%Y-%m-%dT%H:%M:%SZ')
+    return format_datetime.strftime('%B %d, %Y %I:%M %p')
 
 data = [
         {
@@ -129,15 +134,34 @@ data = [
 
 @app.route("/")
 def index():
-    # url = f"https://newsapi.org/v2/everything?q=all&apiKey={API_KEY}"
-    # url = f"https://newsapi.org/v2/top-headlines?country=us&apiKey={Api_key}"
-    # response = requests.get(url)
-    # data = response.json()
-    # news_article = data["articles"]
-    # article = [article for article in news_article]
-    article = data
-    return render_template('index.html', article=article)
+    try:
+        data = client.get_top_headlines()
+        news_article = data["articles"]
+        return render_template('index.html', article=news_article)
+    except Exception as e:
+        return redirect(url_for('index'))
 
+
+@app.route("/category/<category>")
+def news_category(category):
+    if category in CATEGORIES: 
+        try:
+            data = client.get_everything(q=category)
+            print(data)
+            news_article = data["articles"]
+            return render_template("category.html", article=news_article, category=category)
+        except Exception as e:
+            return redirect(url_for('index'))
+    return abort(404)
+
+@app.route("/news/<query>")
+def search_news(query):
+    return render_template("search.html")
+
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template("error.html"), 404
 
 if __name__ == '__main__':
     app.run()
