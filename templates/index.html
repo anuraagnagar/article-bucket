@@ -19,14 +19,20 @@
             <article class="col-sm-9 col-md-5 col-lg-4 col-xl-3">
                 <div class="card mb-3">
                     <div class="p-2">
-                        <img src="{{ news.urlToImage }}" class="card-img" alt="...">
+                        <a href="{{ news.url }}">
+                            <img src="{{ news.urlToImage }}" class="card-img" alt="...">
+                        </a>
                     </div>
                     <div class="card-body">
                         <h6 class="card-title text-muted fw-fold">{{ news.author|upper }}</h6>
-                        <h5 class="card-title">{{ news.title }}</h5>
-                        <p class="card-subtitle mb-3">{{ news.description }}</p>
-                        <p>Published at {{ news.publishedAt }}</p>
-                        <a href="{{ news.url }}" class="btn btn-outline-light w-100">Read More</a>
+                        <a href="{{ news.url }}" class="text-decoration-none text-light">
+                            <h4 class="card-title">{{ news.title }}</h4>
+                            <p class="card-subtitle mb-3">{{ news.description }}</p>
+                        </a>
+                        <div class="text-white-50">
+                            Published at
+                            <p>{{ news.publishedAt|date_time }}</p>
+                        </div>
                     </div>
                 </div>
             </article>
