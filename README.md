@@ -15,25 +15,25 @@ This Flask-based news article application provides users with a convenient way t
 
 ## Installation
 
-1. Clone this repository.
+### 1. Clone this repository.
 
 ```bash
 git clone https://github.com/yourusername/article-bucket.git
 ```
 
-2. Go to the directory.
+### 2. Go to the directory.
 
 ```bash
 cd article-bucket
 ```
 
-3. Create Virtual Environment.
+### 3. Create Virtual Environment.
 
 ```bash
 python -m venv venv
 ```
 
-4. Activate the Environment.
+### 4. Activate the Environment.
 
 On Windows
 ```bash
@@ -45,13 +45,13 @@ On MacOS/Linux
 source venv/bin/activate
 ```
 
-5. Install the requirement package.
+### 5. Install the requirement package.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-6. Run the Server.
+### 6. Run the Server.
 
 ```bash
 flask run
