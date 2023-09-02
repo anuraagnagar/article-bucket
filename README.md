@@ -59,6 +59,4 @@ flask run
 
 ## API Key
 
-You need to set you NewsApi api_key in .env file and set this variable.
-
-`API_KEY=your_news_api_key`
+You need to convert `.env.example` to `.env` file in your base directory and set API_KEY variable value.
