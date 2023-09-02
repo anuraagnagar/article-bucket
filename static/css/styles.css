@@ -5209,7 +5209,7 @@ fieldset:disabled .btn {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  height: 30rem;
+  height: 28rem;
   word-wrap: break-word;
   background-color: #23303e;
   background-clip: border-box;
