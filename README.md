@@ -45,6 +45,8 @@ On MacOS/Linux
 source venv/bin/activate
 ```
 
+You need to convert `.env.example` to `.env` file in your base directory and set API_KEY environment variable value.
+
 ### 5. Install the requirement package.
 
 ```bash
@@ -59,4 +61,3 @@ flask run
 
 ## API Key
 
-You need to convert `.env.example` to `.env` file in your base directory and set API_KEY variable value.
