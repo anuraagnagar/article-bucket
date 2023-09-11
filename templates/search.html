@@ -2,4 +2,37 @@
 
 {% block content %}
 
+<!-- Main Content section-->
+<section id="headlines">
+    <div class="container px-4">
+        <div class="mb-4">
+            <h2>Search result for '{{ request.args.get('q') }}'</h2>
+        </div>
+        <div class="row justify-content-center">
+            {% for news in article %}
+            <article class="col-sm-9 col-md-5 col-lg-4 col-xl-3">
+                <div class="card mb-3">
+                    <div class="p-2">
+                        <a href="{{ news.url }}">
+                            <img src="{{ news.urlToImage }}" class="card-img" alt="...">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title text-muted fw-fold">{{ news.author|upper }}</h6>
+                        <a href="{{ news.url }}" class="text-decoration-none text-light">
+                            <h4 class="card-title">{{ news.title }}</h4>
+                            <p class="card-subtitle mb-3">{{ news.description }}</p>
+                        </a>
+                        <div class="text-white-50">
+                            Published at
+                            <p>{{ news.publishedAt|date_time }}</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 {% endblock %}
