@@ -64,7 +64,7 @@ def search_news(page_size=20):
     except Exception as e:
             return abort(500)
 
-    return render_template("search.html", article=data)
+    return render_template("search.html", article=news_article)
 
 
 @app.errorhandler(404)
