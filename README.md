@@ -44,8 +44,9 @@ On MacOS/Linux
 ```bash
 source venv/bin/activate
 ```
+## API Key
 
-You need to convert `.env.example` to `.env` file in your base directory and set API_KEY environment variable value.
+You need to convert `.env.example` to `.env` file in your base directory and set your newsapi `API_KEY` environment variable value.
 
 ### 5. Install the requirement package.
 
@@ -59,5 +60,4 @@ pip install -r requirements.txt
 flask run
 ```
 
-## API Key
 
