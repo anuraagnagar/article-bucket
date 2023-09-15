@@ -4,9 +4,9 @@
 
 <div class="container my-5">
     <div class="d-flex align-items-center justify-content-center">
-        <div class="col-sm-5">
-            <img class="rounded w-100 mb-3" src="{{ url_for('static', filename='assets/'+ 500|string +'error.jpg') }}"
-            alt="">
+        <div class="col-sm-7">
+            <img class="rounded w-100 mb-3"
+                src="{{ url_for('static', filename='assets/'+ status|string +'error.jpg') }}" alt="error">
         </div>
     </div>
     <h1 class="text-center">{{ error_message }}</h1>

@@ -8,8 +8,7 @@
     <meta name="author" content="Anurag Nagar" />
     <title>Article Bucket - Read Daily Headlines</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Core theme CSS (includes Bootstrap CSS)-->
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
 </head>
 
@@ -42,26 +41,32 @@
                     <li
                         class="nav-item {% if url_for('news_category', category='entertainment') == request.path %}nav-active{% endif %}">
                         <a class="nav-link"
-                            href="{{ url_for('news_category', category='entertainment') }}">Entertainment</a></li>
+                            href="{{ url_for('news_category', category='entertainment') }}">Entertainment</a>
+                    </li>
                     <li
                         class="nav-item {% if url_for('news_category', category='business') == request.path %}nav-active{% endif %}">
-                        <a class="nav-link" href="{{ url_for('news_category', category='business') }}">Business</a></li>
+                        <a class="nav-link" href="{{ url_for('news_category', category='business') }}">Business</a>
+                    </li>
                     <li
                         class="nav-item {% if url_for('news_category', category='general') == request.path %}nav-active{% endif %}">
-                        <a class="nav-link" href="{{ url_for('news_category', category='general') }}">General</a></li>
+                        <a class="nav-link" href="{{ url_for('news_category', category='general') }}">General</a>
+                    </li>
                     <li
                         class="nav-item {% if url_for('news_category', category='healths') == request.path %}nav-active{% endif %}">
-                        <a class="nav-link" href="{{ url_for('news_category', category='healths') }}">Healths</a></li>
+                        <a class="nav-link" href="{{ url_for('news_category', category='healths') }}">Healths</a>
+                    </li>
                     <li
                         class="nav-item {% if url_for('news_category', category='sports') == request.path %}nav-active{% endif %}">
-                        <a class="nav-link" href="{{ url_for('news_category', category='sports') }}">Sports</a></li>
+                        <a class="nav-link" href="{{ url_for('news_category', category='sports') }}">Sports</a>
+                    </li>
                     <li
                         class="nav-item {% if url_for('news_category', category='technology') == request.path %}nav-active{% endif %}">
                         <a class="nav-link" href="{{ url_for('news_category', category='technology') }}">Technology</a>
                     </li>
                     <li
                         class="nav-item {% if url_for('news_category', category='science') == request.path %}nav-active{% endif %}">
-                        <a class="nav-link" href="{{ url_for('news_category', category='science') }}">Science</a></li>
+                        <a class="nav-link" href="{{ url_for('news_category', category='science') }}">Science</a>
+                    </li>
                 </ul>
             </div>
         </div>
