@@ -1,13 +1,26 @@
+import os
+from datetime import datetime
 from dotenv import load_dotenv
+
 from flask import Flask
 from flask import abort, redirect, render_template, request, url_for
+from flask_caching import Cache
+
 from newsapi import NewsApiClient
-from datetime import datetime
-import os
 
 load_dotenv()
 
+config = {
+    "DEBUG": True,
+    "CACHE_TYPE": "SimpleCache",
+    "CACHE_DEFAULT_TIMEOUT": 300
+}
+
 app = Flask(__name__, template_folder='templates')
+
+app.config.from_mapping(config)
+
+cache = Cache(app, config=config)
 
 API_KEY = os.getenv("API_KEY", None)
 
@@ -27,6 +40,7 @@ def date(timestamp):
 
 @app.route("/")
 @app.route("/page=<int:page>")
+@cache.cached(timeout=300)
 def index(page=1, page_size=20):
     try:
         data = client.get_top_headlines(page=page, page_size=page_size)
@@ -38,6 +52,7 @@ def index(page=1, page_size=20):
 
 @app.route("/category/<string:category>")
 @app.route("/category/<string:category>/page=<int:page>")
+@cache.cached(timeout=300)
 def news_category(category=None, page=1, page_size=16):
     if category in CATEGORIES: 
         try:
